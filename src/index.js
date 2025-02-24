@@ -7,17 +7,16 @@ dotenv.config({
 })
 
 connectDB()
-.then(()=>{
-    app.on((error)=>{
-        console.log("ERROR : ", error);
-    })
-    app.listen(process.env.PORT || 8000, ()=> {
-        console.log(`server is running at port : ${process.env.PORT}`);
-    })
+.then(() => {
+    app.on("error", (error) => {
+        console.log("Server Error:", error);
+    });
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(`Server is running at port: ${process.env.PORT || 8000}`);
+    });
 })
-.catch((error)=>{
-    console.log("MONGO DB CONNECTION FAILD !!", error);
-    
-})
+.catch((error) => {
+    console.log("MONGO DB CONNECTION FAILED!!", error);
+});
 
 //when the database is connects we have to make a promise because it is async task 
