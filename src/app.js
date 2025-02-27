@@ -17,6 +17,14 @@ app.use(express.urlencoded({extended : true,limit: "16kb"}))
 app.use(express.static("public"))
 //to store files and folder in one folder
 app.use(cookieParser())
-//add-remove read cookie
+//add-remove & read cookie
+
+
+//routes
+import userRouter from "./routes/user.routes.js"
+
+//routes declaration
+app.use("/api/v1/users", userRouter)
 
 export { app }
+

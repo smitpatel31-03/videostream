@@ -1,14 +1,11 @@
 const asyncHandler = (requestHandler) => {
-    (req,res,next) => {
+    return (req, res, next) => {
         //next is use to middleware
-        Promise.resolve(
-            requestHandler(req,res,next)
-        )
-        .catch((error) => next(error))
+        Promise.resolve(requestHandler(req, res, next)).catch((error)=> next(error))
     }
 }
 
-export {asyncHandler}
+export { asyncHandler }
 
 
 
